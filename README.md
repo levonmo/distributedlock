@@ -20,3 +20,9 @@
 #### 解析：
 + 参数KEYS[1]赋值为lockKey，ARGV[1]赋值为requestId。eval()方法是将Lua代码交给Redis服务端执行，首先获取锁对应的value值，检查是否与requestId相等，如果相等则删除锁（解锁）。
 那么为什么要使用Lua语言来实现呢？因为要确保上述操作是原子性的，eval()方法可以确保原子性，eval命令执行Lua代码的时候，Lua代码将被当成一个命令去执行，并且直到eval命令执行完成，Redis才会执行其他命令。
+
+
+## zookeeper实现分布式锁
+
+
+## mysql乐观锁实现分布式锁
