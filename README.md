@@ -3,7 +3,7 @@
 
 
 ## redis实现分布式锁
-###加锁：
+### 加锁：
 > jedis.set(String key, String value, String nxxx, String expx, int time)
 
 #### 参数解析：
@@ -13,7 +13,7 @@
 + 第四个为expx，这个参数我们传的是PX，意思是我们要给这个key加一个过期的设置，具体时间由第五个参数决定。
 + 第五个为time，与第四个参数相呼应，代表key的过期时间，防止客户端奔溃没有释放锁资源。
 
-###释放锁：
+### 释放锁：
 > String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
 > Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));
 
